@@ -1,3 +1,3 @@
-require_relative '../layout_converter'
-
+require 'rspec'
 require 'yaml'
+require 'kbd_switcher'
