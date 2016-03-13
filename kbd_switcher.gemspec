@@ -8,10 +8,10 @@ Gem::Specification.new do |gem|
   gem.version     = KbdSwitcher::VERSION
   gem.homepage    = 'https://github.com/denisovlev/kbd_switcher'
 
-  gem.author      = 'Lev Denisov'
+  gem.authors      = ['Lev Denisov', 'Valery Mayatsky']
   gem.email       = 'denisovlev@ya.ru'
-  gem.description = 'Switch the keyboard layout of string from English to Russian and ice versa'
-  gem.summary     = 'Switch the keyboard layout of string from English to Russian and ice versa'
+  gem.description = 'Switch the keyboard layout of string from English to Russian and vice versa'
+  gem.summary     = 'Switch the keyboard layout of string from English to Russian and vice versa'
 
   # Gem dependencies goes here
   #gem.add_dependency 'eventmachine', '>= 0.12.10'
