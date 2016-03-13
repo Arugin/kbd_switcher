@@ -1,2 +1,2 @@
-require 'kbd_switcher/layout_converter'
-require 'kbd_switcher/layout_corrector'
+require_relative 'kbd_switcher/layout_converter'
+require_relative 'kbd_switcher/layout_corrector'
