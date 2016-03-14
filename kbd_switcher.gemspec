@@ -8,13 +8,14 @@ Gem::Specification.new do |gem|
   gem.version     = KbdSwitcher::VERSION
   gem.homepage    = 'https://github.com/denisovlev/kbd_switcher'
 
-  gem.authors      = ['Lev Denisov', 'Valery Mayatsky']
+  gem.authors      = ['Lev Denisov', 'Valery Mayatsky', 'Dmitriy Egunov']
   gem.email       = 'denisovlev@ya.ru'
   gem.description = 'Switch the keyboard layout of string from English to Russian and vice versa'
   gem.summary     = 'Switch the keyboard layout of string from English to Russian and vice versa'
 
   # Gem dependencies goes here
-  #gem.add_dependency 'eventmachine', '>= 0.12.10'
+  gem.add_dependency 'json'
+  gem.add_dependency 'unicode'
   #gem.add_development_dependency 'bundler', '~> 1.0'
 
   gem.executables = `git ls-files -- bin/*`.split("\n").map{|f| File.basename(f)}

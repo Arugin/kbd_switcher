@@ -51,20 +51,22 @@ describe LayoutCorrector do
     it 'returns the right trigramms for text' do
       result = subject.get_trigramms('Привет, как дела ♪')
       expected_result = [
-        'При', 'рив', 'иве', 'вет', 'ет,', 
-        'т, ', ', к', ' ка', 'как', 'ак ', 
-        'к д', ' де', 'дел', 'ела', 'ла ', 'а ♪']
+          'при', 'рив', 'иве', 'вет', 'ет ',
+          'т к', ' ка', 'как', 'ак ', 'к д',
+          ' де', 'дел', 'ела', 'ла '
+      ]
       expect(result).to eq(expected_result)
     end
   end
 
   describe '#credibility' do
     let(:trigramms_probability) {
-      {
-        'При' => 1, 'рив' => 1, 'иве' => 1, 'вет' => 1, 'ет,' => 1, 
-        'т, ' => 1, ', к' => 1, ' ка' => 1, 'как' => 1, 'ак ' => 1, 
-        'к д' => 1, ' де' => 1, 'дел' => 1, 'ела' => 1, 'ла ' => 1, 'а ♪' => 1
-      }
+      trigrams = [
+          'при', 'рив', 'иве', 'вет', 'ет ',
+          'т к', ' ка', 'как', 'ак ', 'к д',
+          ' де', 'дел', 'ела', 'ла '
+      ]
+      Hash[trigrams.map { |t| [t, 1] }] # { key1: 1, key2: 1 ... }
     }
 
     before(:each) do
@@ -73,12 +75,12 @@ describe LayoutCorrector do
 
     it 'returns the right credibility for text' do
       result = subject.credibility('Привет, как дела ♪')
-      expect(result).to eq(16)
+      expect(result).to eq(14)
     end
 
     it 'ignores absent trigramms' do
       result = subject.credibility('Вася! Привет, как дела ♪')
-      expect(result).to eq(16)
+      expect(result).to eq(14)
     end
 
   end

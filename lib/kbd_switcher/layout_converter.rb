@@ -1,7 +1,6 @@
 # encoding: utf-8
 
 class LayoutConverter
-  # TODO: Add shift-combinations
   LOWER_IDENTITY = {
       'q' => 'й', 'w' => 'ц', 'e' => 'у', 'r' => 'к',
       't' => 'е', 'y' => 'н', 'u' => 'г', 'i' => 'ш',
@@ -10,7 +9,8 @@ class LayoutConverter
       'g' => 'п', 'h' => 'р', 'j' => 'о', 'k' => 'л',
       'l' => 'д', ';' => 'ж', "'" => 'э', 'z' => 'я',
       'x' => 'ч', 'c' => 'с', 'v' => 'м', 'b' => 'и',
-      'n' => 'т', 'm' => 'ь', ',' => 'б', '.' => 'ю'
+      'n' => 'т', 'm' => 'ь', ',' => 'б', '.' => 'ю',
+      '/' => '.', '`' => 'ё'
   }
 
   UPPER_IDENTITY = {
@@ -24,7 +24,12 @@ class LayoutConverter
       'N' => 'Т', 'M' => 'Ь', '<' => 'Б', '>' => 'Ю',
   }
 
-  LAYOUT_IDENTITY = LOWER_IDENTITY.merge(UPPER_IDENTITY)
+  SPECIAL_IDENTITY = {
+      '@' => '"', '#' => '№', '$' => ';', '^' => ':',
+      '&' => '?', '?' => ',', '~'=>'Ё'
+  }
+
+  LAYOUT_IDENTITY = LOWER_IDENTITY.merge(UPPER_IDENTITY).merge(SPECIAL_IDENTITY)
 
   LAYOUTS = {
     en_ru: LAYOUT_IDENTITY.invert.merge(LAYOUT_IDENTITY),
