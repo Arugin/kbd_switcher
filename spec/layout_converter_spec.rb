@@ -39,13 +39,13 @@ describe LayoutConverter do
     end
 
     it 'works correctly with special characters from ru to en' do
-      converted = LayoutConverter.convert("!\"№;\%:?*()_+.,", from: 'ru', to: 'en')
-      expect(converted).to eq("!@#$\%^&*()_+/?")
+      converted = LayoutConverter.convert('!"№;%:?*()_+.,', from: 'ru', to: 'en')
+      expect(converted).to eq('!@#$%^&*()_+/?')
     end
 
     it 'works correctly with special characters from en to ru' do
-      converted = LayoutConverter.convert("!@#$\%^&*()_+[{]};:\'\",<.>/?`~", from: 'en', to: 'ru')
-      expect(converted).to eq("!\"№;\%:?*()_+хХъЪжЖэЭбБюЮ.,ёЁ")
+      converted = LayoutConverter.convert('!@#$%^&*()_+[{]};:\'",<.>/?`~', from: 'en', to: 'ru')
+      expect(converted).to eq('!"№;%:?*()_+хХъЪжЖэЭбБюЮ.,ёЁ')
     end
 
     it 'does not change numbers from ru to en' do

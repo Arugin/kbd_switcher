@@ -1,4 +1,6 @@
+# encoding: utf-8
 require 'json'
+require 'unicode'
 
 class LayoutCorrector
   # @trigramms_probability {Hash}
@@ -34,8 +36,25 @@ class LayoutCorrector
   end
 
   def get_trigramms(text)
-    return [text] unless text.length > 2
-    text.split('').each_cons(3).map { |ngram| ngram.join('') }
+    string = Unicode::downcase(text)
+    sanitize!(string)
+
+    return []             if string.length <= 1
+    return ["#{string} "] if string.length == 2
+    return [string]       if string.length == 3
+
+    string.split('').each_cons(3).map do |ngram|
+      trigram = ngram.join('')
+      next if trigram.strip.length == 1
+
+      trigram
+    end.compact
   end
 
+  def sanitize!(string)
+    string.gsub!(/[,.:;\-)(\[\]\/><'"\\]/, ' ')
+    string.squeeze!(' ')
+    string.strip!
+    string.gsub!(/[^a-zA-Zа-яА-Я ]/, '')
+  end
 end

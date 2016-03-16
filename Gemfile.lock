@@ -2,6 +2,8 @@ PATH
   remote: .
   specs:
     kbd_switcher (1.0.0)
+      json
+      unicode
 
 GEM
   remote: https://rubygems.org/
@@ -21,6 +23,8 @@ GEM
     rspec-mocks (3.1.2)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.1)
+    unicode (0.4.4.2)
+    unicode (0.4.4.2-x86-mingw32)
 
 PLATFORMS
   ruby
@@ -31,6 +35,7 @@ DEPENDENCIES
   kbd_switcher!
   rake
   rspec
+  unicode
 
 BUNDLED WITH
    1.10.6
