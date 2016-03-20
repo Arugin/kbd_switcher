@@ -2,8 +2,8 @@
 
 require 'spec_helper'
 
-describe LayoutCorrector do
-  subject { LayoutCorrector.new }
+describe KbdSwitcher::LayoutCorrector do
+  subject { described_class.new }
 
   describe '#convert' do
 

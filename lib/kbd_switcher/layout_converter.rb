@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class LayoutConverter
+class KbdSwitcher::LayoutConverter
   LOWER_IDENTITY = {
       'q' => 'й', 'w' => 'ц', 'e' => 'у', 'r' => 'к',
       't' => 'е', 'y' => 'н', 'u' => 'г', 'i' => 'ш',

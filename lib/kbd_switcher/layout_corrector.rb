@@ -2,7 +2,7 @@
 require 'json'
 require 'unicode'
 
-class LayoutCorrector
+class KbdSwitcher::LayoutCorrector
   # @trigramms_probability {Hash}
   attr_reader :trigramms_probability
 
@@ -18,8 +18,8 @@ class LayoutCorrector
   end
 
   def correct(text)
-    ru_en = LayoutConverter.convert(text, from: 'ru', to: 'en')
-    en_ru = LayoutConverter.convert(text, from: 'en', to: 'ru')
+    ru_en = KbdSwitcher::LayoutConverter.convert(text, from: 'ru', to: 'en')
+    en_ru = KbdSwitcher::LayoutConverter.convert(text, from: 'en', to: 'ru')
     possible_texts = [text, ru_en, en_ru]
     credibilities = possible_texts.map do |t|
       credibility(t)
