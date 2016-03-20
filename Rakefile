@@ -6,7 +6,7 @@ require 'unicode'
 task :default => [:spec]
 desc 'run Rspec specs'
 task :spec do
-  sh 'rspec spec'
+  sh 'rspec spec --tag ~integration'
 end
 
 desc 'generate trigrams list from text file'
@@ -35,7 +35,7 @@ task :generate_trigrams, [:input, :output, :white_list, :sanitize] do |_t, args|
   puts 'Normalizing...'
 
   json.each do |key, value|
-    json[key] = value / total
+    json[key] = Math.log(value) / Math.log(total)
     json.delete key if json[key] < 0.00001
   end
 
