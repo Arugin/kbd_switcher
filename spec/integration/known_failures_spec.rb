@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe 'Known failures', integration: true do
-  let!(:corrector) { LayoutCorrector.new }
+  let!(:corrector) { KbdSwitcher::LayoutCorrector.new }
 
   data = JSON.parse(File.read('spec/files/known_failures.json'))
 

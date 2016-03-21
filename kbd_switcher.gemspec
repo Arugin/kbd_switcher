@@ -1,7 +1,7 @@
 # encoding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'kbd_switcher/version'
+require 'kbd_switcher/kbd_switcher_module'
 
 Gem::Specification.new do |gem|
   gem.name        = 'kbd_switcher'
