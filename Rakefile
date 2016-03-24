@@ -19,15 +19,14 @@ task :generate_trigrams, [:input, :output, :white_list, :sanitize] do |_t, args|
 
   json = Hash.new(0)
   total = 0.0
-  generator = LayoutCorrector.new
-  line_num = 1
+  generator = KbdSwitcher::LayoutCorrector.new
 
   puts "Parsing #{input_file} ..."
 
   line_count = `wc -l "#{input_file}"`.strip.split(' ')[0].to_i + 1
   puts "Total line count #{line_count}"
 
-  File.open(input_file).readlines.each do |line|
+  File.foreach(input_file).with_index do |line, line_num|
     time = Benchmark.realtime do
       unless line.valid_encoding?
         line = line.encode('UTF-16be', :invalid=>:replace, :replace=>'?').encode('UTF-8')
@@ -48,7 +47,7 @@ task :generate_trigrams, [:input, :output, :white_list, :sanitize] do |_t, args|
       end
     end
 
-    puts "Parsing time #{time} progress: #{line_num += 1}/#{line_count}"
+    puts "Parsing time #{time} progress: #{line_num}/#{line_count}"
   end
 
   puts 'Normalizing...'
